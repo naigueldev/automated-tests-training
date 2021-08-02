@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "(ruby) run all tests",
+        "type": "shell",
+        "command": "bundle exec rspec",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+        }
+      },
+      {
+        "label": "(ruby) run tests",
+        "type": "shell",
+        "command": "bundle exec rspec ${relativeFile}",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+        }
+      },
+      {
+        "label": "(ruby) run current test",
+        "type": "shell",
+        "command": "bundle exec rspec ${relativeFile}:${lineNumber}",
+        "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": true,
+        }
+      },
+    ]
+  }
