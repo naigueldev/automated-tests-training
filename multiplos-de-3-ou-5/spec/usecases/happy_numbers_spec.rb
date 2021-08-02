@@ -1,31 +1,31 @@
 require './app/entity/happy_numbers'
 
-RSpec.describe "Happy Numbers" do
-    it 'should be happy' do
-        happy_numbers = [1, 7, 10, 13, 19, 23, 28]
+RSpec.describe 'Happy Numbers' do
+  it 'should be happy' do
+    happy_numbers = [1, 7, 10, 13, 19, 23, 28]
 
-        happy_numbers.each { |number|
-            result = Entity::HappyNumber.check_happy(number)
-            
-            happy = true
+    happy_numbers.each do |number|
+      result = Entity::HappyNumber.check_happy(number)
 
-            puts "Number #{number} is happy"
+      happy = true
 
-            expect(result).to eq(happy)
-        }
+      puts "Number #{number} is happy"
+
+      expect(result).to eq(happy)
     end
+  end
 
-    it 'should not be happy' do
-        unhappy_numbers = [2,4,6,8]
+  it 'should not be happy' do
+    unhappy_numbers = [2, 4, 6, 8, 90]
 
-        unhappy_numbers.each { |number|
-            result = Entity::HappyNumber.check_happy(number)
-            
-            happy = false
+    unhappy_numbers.each do |number|
+      result = Entity::HappyNumber.check_happy(number)
 
-            puts "Number #{number} is not happy"
-            
-            expect(result).to eq(happy)
-        }
+      happy = false
+
+      puts "Number #{number} is not happy"
+
+      expect(result).to eq(happy)
     end
+  end
 end
