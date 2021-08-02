@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Livro como dar nome as coisas",
+        "price": 20
+    },
+    {
+        "id": 2,
+        "name": "Book 2",
+        "price": 10
+    },
+    {
+        "id": 3,
+        "name": "Book 3",
+        "price": 5
+    },
+    {
+        "id": 4,
+        "name": "Book 4",
+        "price": 13
+    }
+]
