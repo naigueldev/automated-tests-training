@@ -36,7 +36,7 @@ RSpec.describe 'Freight calculation' do
       expect(cart.get_items.count).to eq(3)
 
       expect(cart_total).to eq(105)
-      
+
       expect(calc_shipping).to eq(0)
     end
   end
@@ -139,9 +139,9 @@ RSpec.describe 'Freight calculation' do
       cart = Entity::Cart.new(user)
 
       cart.add(product, 1)
-      
+
       cart.remove_product(product)
-      
+
       cart_shipping = cart.calc_total
 
       expect(cart.get_items.count).to eq(0)
@@ -149,7 +149,7 @@ RSpec.describe 'Freight calculation' do
       expect(cart_shipping).to eq(0)
     end
   end
-  
+
   context 'reset product quantity from cart' do
     it 'should remove product from cart' do
       product = Entity::Product.find(1)
@@ -161,9 +161,9 @@ RSpec.describe 'Freight calculation' do
 
       cart.add(product, 1)
       cart.add(product_two, 3)
-      
+
       cart.update(product, 0)
-      
+
       cart_shipping = cart.calc_total
 
       expect(cart.get_items.count).to eq(1)

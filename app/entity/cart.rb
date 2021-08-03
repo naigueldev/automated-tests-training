@@ -28,22 +28,22 @@ module Entity
     end
 
     def remove_product(product)
-      @items.each { |item| 
-        @items.delete(item) if item[:product] == product 
-      }
+      @items.each do |item|
+        @items.delete(item) if item[:product] == product
+      end
     end
 
     def update_quantity(product, quantity)
-      @items.each { |item| 
-        item[:quantity] = quantity if item[:product] == product 
+      @items.each do |item|
+        item[:quantity] = quantity if item[:product] == product
         @items.delete(item) if quantity.zero?
-      }
+      end
     end
 
     def increase_quantity(product, quantity)
-      @items.each { |item| 
-        item[:quantity] += quantity if item[:product] == product 
-      }
+      @items.each do |item|
+        item[:quantity] += quantity if item[:product] == product
+      end
     end
 
     def product_present?(product)

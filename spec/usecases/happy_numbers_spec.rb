@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require './app/entity/happy_numbers'
+require './app/helpers/happy_numbers'
 
 RSpec.describe 'Happy Numbers' do
   it 'should be happy' do
     happy_numbers = [1, 7, 10, 13, 19, 23, 28]
 
     happy_numbers.each do |number|
-      result = Entity::HappyNumber.check_happy(number)
+      result = Helper::HappyNumber.check_happy(number)
 
       happy = true
 
@@ -21,7 +21,7 @@ RSpec.describe 'Happy Numbers' do
     unhappy_numbers = [2, 4, 6, 8, 90]
 
     unhappy_numbers.each do |number|
-      result = Entity::HappyNumber.check_happy(number)
+      result = Helper::HappyNumber.check_happy(number)
 
       happy = false
 

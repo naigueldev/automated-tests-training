@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require './app/entity/word_in_number'
-require './app/entity/happy_numbers'
-require './app/entity/sum'
+require './app/helpers/word_in_number'
+require './app/helpers/happy_numbers'
+require './app/helpers/sum'
 
 RSpec.describe 'Words in numbers' do
   it 'should be prime number, happy and multiples of 3 and 5' do
@@ -22,9 +22,9 @@ RSpec.describe 'Words in numbers' do
       sum_word += all_letters.index(item) + 1 if all_letters.index(item)
     end
 
-    is_prime_number = Entity::WordInNumber.prime_number(sum_word)
-    is_happy_number = Entity::HappyNumber.check_happy(sum_word)
-    is_multiple = Entity::Sum.multiple_or?(sum_word, 3, 5)
+    is_prime_number = Helper::WordInNumber.prime_number(sum_word)
+    is_happy_number = Helper::HappyNumber.check_happy(sum_word)
+    is_multiple = Helper::Sum.multiple_or?(sum_word, 3, 5)
 
     expect(is_prime_number).to be(false)
     expect(is_happy_number).to be(false)

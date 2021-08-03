@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Entity
+module Helper
   class Sum
     def self.multiples(start_number = 0, end_number = 1000)
       (start_number...end_number).to_a

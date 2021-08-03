@@ -2,7 +2,7 @@
 
 require 'prime'
 
-module Entity
+module Helper
   class WordInNumber
     def self.prime_number(number = 0)
       Prime.prime?(number)

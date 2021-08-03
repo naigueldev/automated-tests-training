@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Entity
+module Helper
   class HappyNumber
     def self.check_happy(number = 0, ready_pass = [])
       array_numbers = number.digits
@@ -17,7 +17,7 @@ module Entity
 
       ready_pass << square_sum
 
-      Entity::HappyNumber.check_happy(square_sum, ready_pass)
+      Helper::HappyNumber.check_happy(square_sum, ready_pass)
     end
   end
 end
