@@ -1,5 +1,23 @@
 # automated-tests-training
 
+## Iniciando o container:
+
+Executar comando para construir o container:
+
+`docker-compose build`
+
+Executar o comando para subir o container:
+
+`docker-compose up -d`
+
+## Rodando os testes automatizados
+
+Execute o comando:
+
+`docker-compose exec api bundle exec rspec`
+
+## Exercícios:
+
 ### Exercício 1 - Múltiplos de 3 ou 5
 
 ```
