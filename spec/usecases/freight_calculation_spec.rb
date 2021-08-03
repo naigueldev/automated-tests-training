@@ -23,7 +23,7 @@ RSpec.describe 'Freight calculation' do
       cart.add(product_two, 3)
       cart.add(product_three, 3)
 
-      cart_shipping = cart.calc_total
+      cart_total = cart.calc_total
 
       allow(Services::Correios).to receive(:shipping_calculate)
 
@@ -35,7 +35,9 @@ RSpec.describe 'Freight calculation' do
 
       expect(cart.get_items.count).to eq(3)
 
-      expect(cart_shipping).to eq(105)
+      expect(cart_total).to eq(105)
+      
+      expect(calc_shipping).to eq(0)
     end
   end
 
