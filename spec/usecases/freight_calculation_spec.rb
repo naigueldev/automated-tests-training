@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require './app/entity/product'
-require './app/entity/user'
-require './app/entity/cart'
+require './app/entities/product'
+require './app/entities/user'
+require './app/entities/cart'
 require './app/services/correios'
 require './app/services/shipping_method'
 
