@@ -14,7 +14,7 @@ Executar o comando para subir o container:
 
 Execute o comando:
 
-`docker-compose exec api bundle exec rspec`
+`docker-compose run --no-deps api bundle exec rspec`
 
 ## Exercícios:
 
