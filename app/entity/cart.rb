@@ -12,7 +12,7 @@ module Entity
     end
 
     def add(product, quantity)
-      return update_quantity(product, quantity) if product_present?(product)
+      return increase_quantity(product, quantity) if product_present?(product)
 
       item = {
         user: @user,
@@ -23,6 +23,10 @@ module Entity
       @items << item
     end
 
+    def update(product, quantity)
+      update_quantity(product, quantity) if product_present?(product)
+    end
+
     def remove_product(product)
       @items.each { |item| 
         @items.delete(item) if item[:product] == product 
@@ -30,6 +34,13 @@ module Entity
     end
 
     def update_quantity(product, quantity)
+      @items.each { |item| 
+        item[:quantity] = quantity if item[:product] == product 
+        @items.delete(item) if quantity.zero?
+      }
+    end
+
+    def increase_quantity(product, quantity)
       @items.each { |item| 
         item[:quantity] += quantity if item[:product] == product 
       }
