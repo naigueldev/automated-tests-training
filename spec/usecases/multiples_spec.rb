@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './app/entity/sum'
 
 RSpec.describe Entity::Sum do

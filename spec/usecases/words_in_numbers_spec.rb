@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './app/entity/word_in_number'
 require './app/entity/happy_numbers'
 require './app/entity/sum'

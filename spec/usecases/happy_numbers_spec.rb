@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './app/entity/happy_numbers'
 
 RSpec.describe 'Happy Numbers' do

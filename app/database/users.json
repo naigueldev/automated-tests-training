@@ -2,21 +2,21 @@
     {
         "id": 1,
         "name": "User One",
-        "address_post_code": "99876-287"
+        "zip_code": "99876-287"
     },
     {
         "id": 2,
         "name": "User Two",
-        "address_post_code": "12345-287"
+        "zip_code": "12345-287"
     },
     {
         "id": 3,
         "name": "User Three",
-        "address_post_code": "99876-123"
+        "zip_code": "99876-123"
     },
     {
         "id": 4,
         "name": "User Four",
-        "address_post_code": "99876-567"
+        "zip_code": "99876-567"
     }
 ]

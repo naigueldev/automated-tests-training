@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Entity
   class HappyNumber
     def self.check_happy(number = 0, ready_pass = [])
