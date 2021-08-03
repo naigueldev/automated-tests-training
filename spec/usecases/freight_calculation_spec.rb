@@ -7,46 +7,8 @@ require './app/services/correios'
 require './app/services/shipping_method'
 
 RSpec.describe 'Freight calculation' do
-  context 'less then 100' do
-    it 'cart shipping total zero' do
-      user_id = 4
-
-      user = Entity::User.find(user_id)
-
-      cart = Entity::Cart.new(user)
-
-      cart_shipping = cart.calc_total
-
-      expect(cart.get_items.count).to eq(0)
-
-      expect(cart_shipping).to eq(0)
-    end
-
-    it 'cart shipping total less then 100' do
-      product_one = Entity::Product.find(1)
-      product_two = Entity::Product.find(2)
-      product_three = Entity::Product.find(3)
-
-      user_id = 4
-
-      user = Entity::User.find(user_id)
-
-      cart = Entity::Cart.new(user)
-
-      cart.add(product_one, 2)
-      cart.add(product_two, 2)
-      cart.add(product_three, 2)
-
-      cart_shipping = cart.calc_total
-
-      allow(Services::Correios).to receive(:shipping_calculate)
-
-      expect(cart.get_items.count).to eq(3)
-
-      expect(cart_shipping).to eq(70)
-    end
-
-    it 'cart shipping total greater then 100' do
+  context 'cart shipping greater then 100' do
+    it 'should not execute service' do
       product_one = Entity::Product.find(1)
       product_two = Entity::Product.find(2)
       product_three = Entity::Product.find(3)
@@ -75,8 +37,46 @@ RSpec.describe 'Freight calculation' do
 
       expect(cart_shipping).to eq(105)
     end
+  end
 
-    it 'cart shipping total less then 100, execute correios service' do
+  context 'cart shipping less then 100' do
+    it 'should result zero when cart is empty' do
+      user_id = 4
+
+      user = Entity::User.find(user_id)
+
+      cart = Entity::Cart.new(user)
+
+      cart_shipping = cart.calc_total
+
+      expect(cart.get_items.count).to eq(0)
+
+      expect(cart_shipping).to eq(0)
+    end
+
+    it 'should calculate of cart total' do
+      product_one = Entity::Product.find(1)
+      product_two = Entity::Product.find(2)
+      product_three = Entity::Product.find(3)
+
+      user_id = 4
+
+      user = Entity::User.find(user_id)
+
+      cart = Entity::Cart.new(user)
+
+      cart.add(product_one, 2)
+      cart.add(product_two, 2)
+      cart.add(product_three, 2)
+
+      cart_shipping = cart.calc_total
+
+      expect(cart.get_items.count).to eq(3)
+
+      expect(cart_shipping).to eq(70)
+    end
+
+    it 'should calc shipping and execute service method once' do
       product_one = Entity::Product.find(1)
       product_two = Entity::Product.find(2)
       product_three = Entity::Product.find(3)
@@ -106,6 +106,45 @@ RSpec.describe 'Freight calculation' do
       expect(cart.get_items.count).to eq(3)
 
       expect(cart_shipping).to eq(70)
+    end
+  end
+
+  context 'add same product to existing cart' do
+    it 'should increase the product quantity' do
+      product = Entity::Product.find(1)
+
+      user = Entity::User.find(1)
+
+      cart = Entity::Cart.new(user)
+
+      cart.add(product, 1)
+      cart.add(product, 1)
+
+      cart_shipping = cart.calc_total
+
+      expect(cart.get_items.count).to eq(1)
+
+      expect(cart_shipping).to eq(40)
+    end
+  end
+
+  context 'remove product from cart' do
+    it 'should remove product' do
+      product = Entity::Product.find(1)
+
+      user = Entity::User.find(1)
+
+      cart = Entity::Cart.new(user)
+
+      cart.add(product, 1)
+      
+      cart.remove_product(product)
+      
+      cart_shipping = cart.calc_total
+
+      expect(cart.get_items.count).to eq(0)
+
+      expect(cart_shipping).to eq(0)
     end
   end
 end
